@@ -20,7 +20,11 @@ Post.init(
         body:{
             type:DataTypes.STRING,
             allowNull:false,
-        }
+        },
+        userid:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
 
     },
   {
