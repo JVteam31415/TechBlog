@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     const postData = await Post.findAll({
       include: [User],
     });
-
+    console.log("home route?")
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('all-posts', { posts });
@@ -21,7 +21,13 @@ router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(
       // TODO: YOUR CODE HERE
-      req.params.id
+      req.params.id,
+      {
+        include: [Comment]
+      },
+      {
+        include: [User]
+      },
     );
 
     if (postData) {
